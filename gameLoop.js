@@ -390,12 +390,14 @@ class Game {
     handleTaps() {
         // check if the player killed a bug
         let deadIndexes = [];
+        let graceArea = 5;
+        let halfSize = this.size / 2;
         this.taps.forEach(tap => {
             this.bugs.forEach(bug => {
                 if (
-                    (tap.x > bug.x - bug.size / 2 && tap.x < bug.x + bug.size / 2)
+                    (tap.x > (bug.x - halfSize) - graceArea && tap.x < (bug.x + halfSize) + graceArea)
                     &&
-                    (tap.y > bug.y - bug.size / 2 && tap.y < bug.y + bug.size / 2)
+                    (tap.y > (bug.y - halfSize) - graceArea && tap.y < (bug.y + halfSize) + graceArea)
                 ) {
                     this.score += bug.points;
                     //remove the bug from the game
